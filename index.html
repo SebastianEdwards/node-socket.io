@@ -15,7 +15,8 @@
               event.target.playVideo();
             },
             onStateChange: (event) => {
-              if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ended) {
+              console.log(event)
+              if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
                 location.reload();
               }
             }
