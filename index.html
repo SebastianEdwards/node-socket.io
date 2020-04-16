@@ -3,13 +3,22 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       let socket = io();
+      let playing = false;
+
+      setInterval(() => {
+        if (!playing) location.reload();
+      }, 1000 * 60 * 5);
 
       socket.on('play', () => {
-        var player;
+        console.log(playing)
+        if (playing) return;
+        playing = true;
+
+        let player;
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: 'SKrPg8fkV_o',
+          videoId: 'BiSnwPfC8Hk',
           events: {
             onReady: (event) => {
               event.target.playVideo();
@@ -22,7 +31,6 @@
             }
           },
           playerVars: {
-            start: 65,
             autoplay: 1
           }
         });
@@ -30,7 +38,7 @@
     </script>
   </head>
   <body style="overflow: hidden; height: 100%">
-    <iframe width=100% height=100% src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS7m3fhO3WEkV8grcU4ILRvu-8_zXy9CVSPIiL1kbt6OjjZPArj9ejTMUsE_RBstUVWWRri7MY6NRwm/pubhtml?gid=1972265192&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+    <iframe scrolling=no width=100% height=100% src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS7m3fhO3WEkV8grcU4ILRvu-8_zXy9CVSPIiL1kbt6OjjZPArj9ejTMUsE_RBstUVWWRri7MY6NRwm/pubhtml?gid=1972265192&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
     <div id="player"></div>
     <script>
